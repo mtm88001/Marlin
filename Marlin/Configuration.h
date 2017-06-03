@@ -504,7 +504,7 @@
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 800, 465} //Tronxy with GT2560RevA board.
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {800, 800, 800, 465} //Tronxy with GT2560RevA board. SD5984 drivers
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {200, 200, 800, 465} //Tronxy with GT2560RevA board. SD5984 drivers
 
 /**
  * Default Max Feed Rate (mm/s)
