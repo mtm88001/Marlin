@@ -38,12 +38,7 @@
 
   #define EXTRUSION_MULTIPLIER 1.0
   #define RETRACTION_MULTIPLIER 1.0
-  #define NOZZLE 0.4
-  #define FILAMENT 1.75
-  #define LAYER_HEIGHT 0.2
   #define PRIME_LENGTH 10.0
-  #define BED_TEMP 60.0
-  #define HOTEND_TEMP 205.0
   #define OOZE_AMOUNT 0.3
 
   #define SIZE_OF_INTERSECTION_CIRCLES 5
@@ -58,67 +53,67 @@
    *
    *   G26 is a Mesh Validation Tool intended to provide support for the Marlin Unified Bed Leveling System.
    *   In order to fully utilize and benefit from the Marlin Unified Bed Leveling System an accurate Mesh must
-   *   be defined.  G29 is designed to allow the user to quickly validate the correctness of her Mesh.  It will
+   *   be defined. G29 is designed to allow the user to quickly validate the correctness of her Mesh. It will
    *   first heat the bed and nozzle. It will then print lines and circles along the Mesh Cell boundaries and
    *   the intersections of those lines (respectively).
    *
    *   This action allows the user to immediately see where the Mesh is properly defined and where it needs to
-   *   be edited.  The command will generate the Mesh lines closest to the nozzle's starting position.  Alternatively
-   *   the user can specify the X and Y position of interest with command parameters.  This allows the user to
+   *   be edited. The command will generate the Mesh lines closest to the nozzle's starting position. Alternatively
+   *   the user can specify the X and Y position of interest with command parameters. This allows the user to
    *   focus on a particular area of the Mesh where attention is needed.
    *
-   *   B #  Bed         Set the Bed Temperature.  If not specified, a default of 60 C. will be assumed.
+   *   B #  Bed         Set the Bed Temperature. If not specified, a default of 60 C. will be assumed.
    *
    *   C    Current     When searching for Mesh Intersection points to draw, use the current nozzle location
    *                    as the base for any distance comparison.
    *
-   *   D    Disable     Disable the Unified Bed Leveling System.  In the normal case the user is invoking this
-   *                    command to see how well a Mesh as been adjusted to match a print surface.  In order to do
-   *                    this the Unified Bed Leveling System is turned on by the G26 command.  The D parameter
+   *   D    Disable     Disable the Unified Bed Leveling System. In the normal case the user is invoking this
+   *                    command to see how well a Mesh as been adjusted to match a print surface. In order to do
+   *                    this the Unified Bed Leveling System is turned on by the G26 command. The D parameter
    *                    alters the command's normal behaviour and disables the Unified Bed Leveling System even if
    *                    it is on.
    *
-   *   H #  Hotend      Set the Nozzle Temperature.  If not specified, a default of 205 C. will be assumed.
+   *   H #  Hotend      Set the Nozzle Temperature. If not specified, a default of 205 C. will be assumed.
    *
-   *   F #  Filament    Used to specify the diameter of the filament being used.  If not specified
-   *                    1.75mm filament is assumed.  If you are not getting acceptable results by using the
+   *   F #  Filament    Used to specify the diameter of the filament being used. If not specified
+   *                    1.75mm filament is assumed. If you are not getting acceptable results by using the
    *                    'correct' numbers, you can scale this number up or down a little bit to change the amount
    *                    of filament that is being extruded during the printing of the various lines on the bed.
    *
    *   K    Keep-On     Keep the heaters turned on at the end of the command.
    *
-   *   L #  Layer       Layer height.  (Height of nozzle above bed)  If not specified .20mm will be used.
+   *   L #  Layer       Layer height. (Height of nozzle above bed)  If not specified .20mm will be used.
    *
-   *   O #  Ooooze      How much your nozzle will Ooooze filament while getting in position to print.  This
+   *   O #  Ooooze      How much your nozzle will Ooooze filament while getting in position to print. This
    *                    is over kill, but using this parameter will let you get the very first 'circle' perfect
    *                    so you have a trophy to peel off of the bed and hang up to show how perfectly you have your
-   *                    Mesh calibrated.  If not specified, a filament length of .3mm is assumed.
+   *                    Mesh calibrated. If not specified, a filament length of .3mm is assumed.
    *
-   *   P #  Prime       Prime the nozzle with specified length of filament.  If this parameter is not
-   *                    given, no prime action will take place.  If the parameter specifies an amount, that much
-   *                    will be purged before continuing.  If no amount is specified the command will start
+   *   P #  Prime       Prime the nozzle with specified length of filament. If this parameter is not
+   *                    given, no prime action will take place. If the parameter specifies an amount, that much
+   *                    will be purged before continuing. If no amount is specified the command will start
    *                    purging filament until the user provides an LCD Click and then it will continue with
-   *                    printing the Mesh.  You can carefully remove the spent filament with a needle nose
-   *                    pliers while holding the LCD Click wheel in a depressed state.  If you do not have
+   *                    printing the Mesh. You can carefully remove the spent filament with a needle nose
+   *                    pliers while holding the LCD Click wheel in a depressed state. If you do not have
    *                    an LCD, you must specify a value if you use P.
    *
-   *   Q #  Multiplier  Retraction Multiplier.  Normally not needed.  Retraction defaults to 1.0mm and
+   *   Q #  Multiplier  Retraction Multiplier. Normally not needed. Retraction defaults to 1.0mm and
    *                    un-retraction is at 1.2mm   These numbers will be scaled by the specified amount
    *
    *   R #  Repeat      Prints the number of patterns given as a parameter, starting at the current location.
    *                    If a parameter isn't given, every point will be printed unless G26 is interrupted.
    *                    This works the same way that the UBL G29 P4 R parameter works.
    *
-   *                    NOTE:  If you do not have an LCD, you -must- specify R.  This is to ensure that you are
+   *                    NOTE:  If you do not have an LCD, you -must- specify R. This is to ensure that you are
    *                    aware that there's some risk associated with printing without the ability to abort in
-   *                    cases where mesh point Z value may be inaccurate.  As above, if you do not include a
+   *                    cases where mesh point Z value may be inaccurate. As above, if you do not include a
    *                    parameter, every point will be printed.
    *
-   *   S #  Nozzle      Used to control the size of nozzle diameter.  If not specified, a .4mm nozzle is assumed.
+   *   S #  Nozzle      Used to control the size of nozzle diameter. If not specified, a .4mm nozzle is assumed.
    *
-   *   U #  Random      Randomize the order that the circles are drawn on the bed.  The search for the closest
-   *                    undrawn cicle is still done.  But the distance to the location for each circle has a
-   *                    random number of the size specified added to it.  Specifying S50 will give an interesting
+   *   U #  Random      Randomize the order that the circles are drawn on the bed. The search for the closest
+   *                    undrawn cicle is still done. But the distance to the location for each circle has a
+   *                    random number of the size specified added to it. Specifying S50 will give an interesting
    *                    deviation from the normal behaviour on a 10 x 10 Mesh.
    *
    *   X #  X Coord.    Specify the starting location of the drawing activity.
@@ -134,15 +129,10 @@
     extern char lcd_status_message[];
   #endif
   extern float destination[XYZE];
-  void set_destination_to_current();
+  void set_destination_from_current();
   void prepare_move_to_destination();
-  #if AVR_AT90USB1286_FAMILY  // Teensyduino & Printrboard IDE extensions have compile errors without this
-    inline void sync_plan_position_e() { planner.set_e_position_mm(current_position[E_AXIS]); }
-    inline void set_current_to_destination() { COPY(current_position, destination); }
-  #else
-    void sync_plan_position_e();
-    void set_current_to_destination();
-  #endif
+  inline void sync_plan_position_e() { planner.set_e_position_mm(current_position[E_AXIS]); }
+  inline void set_current_from_destination() { COPY(current_position, destination); }
   #if ENABLED(NEWPANEL)
     void lcd_setstatusPGM(const char* const message, const int8_t level);
     void chirp_at_user();
@@ -218,7 +208,7 @@
    * nozzle in a problem area and doing a G29 P4 R command.
    */
   void unified_bed_leveling::G26() {
-    SERIAL_ECHOLNPGM("G26 command started.  Waiting for heater(s).");
+    SERIAL_ECHOLNPGM("G26 command started. Waiting for heater(s).");
     float tmp, start_angle, end_angle;
     int   i, xi, yi;
     mesh_index_pair location;
@@ -230,7 +220,7 @@
     if (current_position[Z_AXIS] < Z_CLEARANCE_BETWEEN_PROBES) {
       do_blocking_move_to_z(Z_CLEARANCE_BETWEEN_PROBES);
       stepper.synchronize();
-      set_current_to_destination();
+      set_current_from_destination();
     }
 
     if (turn_on_heaters()) goto LEAVE;
@@ -255,7 +245,7 @@
     ZERO(vertical_mesh_line_flags);
 
     // Move nozzle to the specified height for the first layer
-    set_destination_to_current();
+    set_destination_from_current();
     destination[Z_AXIS] = g26_layer_height;
     move_to(destination, 0.0);
     move_to(destination, g26_ooze_amount);
@@ -264,7 +254,7 @@
     //debug_current_and_destination(PSTR("Starting G26 Mesh Validation Pattern."));
 
     /**
-     * Declare and generate a sin() & cos() table to be used during the circle drawing.  This will lighten
+     * Declare and generate a sin() & cos() table to be used during the circle drawing. This will lighten
      * the CPU load and make the arc drawing faster and more smooth
      */
     float sin_table[360 / 30 + 1], cos_table[360 / 30 + 1];
@@ -284,7 +274,7 @@
 
         // If this mesh location is outside the printable_radius, skip it.
 
-        if (!position_is_reachable_raw_xy(circle_x, circle_y)) continue;
+        if (!position_is_reachable(circle_x, circle_y)) continue;
 
         xi = location.x_index;  // Just to shrink the next few lines and make them easier to understand
         yi = location.y_index;
@@ -333,16 +323,16 @@
           if (tmp_div_30 < 0) tmp_div_30 += 360 / 30;
           if (tmp_div_30 > 11) tmp_div_30 -= 360 / 30;
 
-          float x = circle_x + cos_table[tmp_div_30],    // for speed, these are now a lookup table entry
-                y = circle_y + sin_table[tmp_div_30],
+          float rx = circle_x + cos_table[tmp_div_30],    // for speed, these are now a lookup table entry
+                ry = circle_y + sin_table[tmp_div_30],
                 xe = circle_x + cos_table[tmp_div_30 + 1],
                 ye = circle_y + sin_table[tmp_div_30 + 1];
           #if IS_KINEMATIC
             // Check to make sure this segment is entirely on the bed, skip if not.
-            if (!position_is_reachable_raw_xy(x, y) || !position_is_reachable_raw_xy(xe, ye)) continue;
-          #else                                              // not, we need to skip
-            x  = constrain(x, X_MIN_POS + 1, X_MAX_POS - 1); // This keeps us from bumping the endstops
-            y  = constrain(y, Y_MIN_POS + 1, Y_MAX_POS - 1);
+            if (!position_is_reachable(rx, ry) || !position_is_reachable(xe, ye)) continue;
+          #else                                               // not, we need to skip
+            rx = constrain(rx, X_MIN_POS + 1, X_MAX_POS - 1); // This keeps us from bumping the endstops
+            ry = constrain(ry, Y_MIN_POS + 1, Y_MAX_POS - 1);
             xe = constrain(xe, X_MIN_POS + 1, X_MAX_POS - 1);
             ye = constrain(ye, Y_MIN_POS + 1, Y_MAX_POS - 1);
           #endif
@@ -358,7 +348,7 @@
           //  debug_current_and_destination(seg_msg);
           //}
 
-          print_line_from_here_to_there(LOGICAL_X_POSITION(x), LOGICAL_Y_POSITION(y), g26_layer_height, LOGICAL_X_POSITION(xe), LOGICAL_Y_POSITION(ye), g26_layer_height);
+          print_line_from_here_to_there(rx, ry, g26_layer_height, xe, ye, g26_layer_height);
 
         }
         if (look_for_lines_to_connect())
@@ -464,7 +454,7 @@
               sy = ey = constrain(mesh_index_to_ypos(j), Y_MIN_POS + 1, Y_MAX_POS - 1);
               ex = constrain(ex, X_MIN_POS + 1, X_MAX_POS - 1);
 
-              if (position_is_reachable_raw_xy(sx, sy) && position_is_reachable_raw_xy(ex, ey)) {
+              if (position_is_reachable(sx, sy) && position_is_reachable(ex, ey)) {
 
                 if (g26_debug_flag) {
                   SERIAL_ECHOPAIR(" Connecting with horizontal line (sx=", sx);
@@ -475,8 +465,7 @@
                   SERIAL_EOL();
                   //debug_current_and_destination(PSTR("Connecting horizontal line."));
                 }
-
-                print_line_from_here_to_there(LOGICAL_X_POSITION(sx), LOGICAL_Y_POSITION(sy), g26_layer_height, LOGICAL_X_POSITION(ex), LOGICAL_Y_POSITION(ey), g26_layer_height);
+                print_line_from_here_to_there(sx, sy, g26_layer_height, ex, ey, g26_layer_height);
               }
               bit_set(horizontal_mesh_line_flags, i, j);   // Mark it as done so we don't do it again, even if we skipped it
             }
@@ -498,7 +487,7 @@
                 sy = constrain(sy, Y_MIN_POS + 1, Y_MAX_POS - 1);
                 ey = constrain(ey, Y_MIN_POS + 1, Y_MAX_POS - 1);
 
-                if (position_is_reachable_raw_xy(sx, sy) && position_is_reachable_raw_xy(ex, ey)) {
+                if (position_is_reachable(sx, sy) && position_is_reachable(ex, ey)) {
 
                   if (g26_debug_flag) {
                     SERIAL_ECHOPAIR(" Connecting with vertical line (sx=", sx);
@@ -509,7 +498,7 @@
                     SERIAL_EOL();
                     debug_current_and_destination(PSTR("Connecting vertical line."));
                   }
-                  print_line_from_here_to_there(LOGICAL_X_POSITION(sx), LOGICAL_Y_POSITION(sy), g26_layer_height, LOGICAL_X_POSITION(ex), LOGICAL_Y_POSITION(ey), g26_layer_height);
+                  print_line_from_here_to_there(sx, sy, g26_layer_height, ex, ey, g26_layer_height);
                 }
                 bit_set(vertical_mesh_line_flags, i, j);   // Mark it as done so we don't do it again, even if skipped
               }
@@ -539,7 +528,7 @@
       G26_line_to_destination(feed_value);
 
       stepper.synchronize();
-      set_destination_to_current();
+      set_destination_from_current();
     }
 
     // Check if X or Y is involved in the movement.
@@ -555,7 +544,7 @@
     G26_line_to_destination(feed_value);
 
     stepper.synchronize();
-    set_destination_to_current();
+    set_destination_from_current();
 
   }
 
@@ -575,17 +564,17 @@
 
   /**
    * print_line_from_here_to_there() takes two cartesian coordinates and draws a line from one
-   * to the other.  But there are really three sets of coordinates involved.  The first coordinate
-   * is the present location of the nozzle.  We don't necessarily want to print from this location.
-   * We first need to move the nozzle to the start of line segment where we want to print.  Once
+   * to the other. But there are really three sets of coordinates involved. The first coordinate
+   * is the present location of the nozzle. We don't necessarily want to print from this location.
+   * We first need to move the nozzle to the start of line segment where we want to print. Once
    * there, we can use the two coordinates supplied to draw the line.
    *
    * Note:  Although we assume the first set of coordinates is the start of the line and the second
-   * set of coordinates is the end of the line, it does not always work out that way.  This function
-   * optimizes the movement to minimize the travel distance before it can start printing.  This saves
-   * a lot of time and eleminates a lot of non-sensical movement of the nozzle.   However, it does
+   * set of coordinates is the end of the line, it does not always work out that way. This function
+   * optimizes the movement to minimize the travel distance before it can start printing. This saves
+   * a lot of time and eliminates a lot of nonsensical movement of the nozzle. However, it does
    * cause a lot of very little short retracement of th nozzle when it draws the very first line
-   * segment of a 'circle'.   The time this requires is very short and is easily saved by the other
+   * segment of a 'circle'. The time this requires is very short and is easily saved by the other
    * cases where the optimization comes into play.
    */
   void unified_bed_leveling::print_line_from_here_to_there(const float &sx, const float &sy, const float &sz, const float &ex, const float &ey, const float &ez) {
@@ -601,9 +590,8 @@
 
     // If the end point of the line is closer to the nozzle, flip the direction,
     // moving from the end to the start. On very small lines the optimization isn't worth it.
-    if (dist_end < dist_start && (SIZE_OF_INTERSECTION_CIRCLES) < FABS(line_length)) {
+    if (dist_end < dist_start && (SIZE_OF_INTERSECTION_CIRCLES) < FABS(line_length))
       return print_line_from_here_to_there(ex, ey, ez, sx, sy, sz);
-    }
 
     // Decide whether to retract & bump
 
@@ -631,12 +619,12 @@
 
     g26_extrusion_multiplier  = EXTRUSION_MULTIPLIER;
     g26_retraction_multiplier = RETRACTION_MULTIPLIER;
-    g26_nozzle                = NOZZLE;
-    g26_filament_diameter     = FILAMENT;
-    g26_layer_height          = LAYER_HEIGHT;
+    g26_nozzle                = MESH_TEST_NOZZLE_SIZE;
+    g26_filament_diameter     = DEFAULT_NOMINAL_FILAMENT_DIA;
+    g26_layer_height          = MESH_TEST_LAYER_HEIGHT;
     g26_prime_length          = PRIME_LENGTH;
-    g26_bed_temp              = BED_TEMP;
-    g26_hotend_temp           = HOTEND_TEMP;
+    g26_bed_temp              = MESH_TEST_BED_TEMP;
+    g26_hotend_temp           = MESH_TEST_HOTEND_TEMP;
     g26_prime_flag            = 0;
 
     g26_ooze_amount           = parser.linearval('O', OOZE_AMOUNT);
@@ -742,9 +730,9 @@
       return UBL_ERR;
     }
 
-    g26_x_pos = parser.linearval('X', current_position[X_AXIS]);
-    g26_y_pos = parser.linearval('Y', current_position[Y_AXIS]);
-    if (!position_is_reachable_xy(g26_x_pos, g26_y_pos)) {
+    g26_x_pos = parser.seenval('X') ? RAW_X_POSITION(parser.value_linear_units()) : current_position[X_AXIS];
+    g26_y_pos = parser.seenval('Y') ? RAW_Y_POSITION(parser.value_linear_units()) : current_position[Y_AXIS];
+    if (!position_is_reachable(g26_x_pos, g26_y_pos)) {
       SERIAL_PROTOCOLLNPGM("?Specified X,Y coordinate out of bounds.");
       return UBL_ERR;
     }
@@ -785,9 +773,10 @@
               if (ubl_lcd_clicked()) return exit_from_g26();
             #endif
 
-            if (PENDING(millis(), next)) {
+            if (ELAPSED(millis(), next)) {
               next = millis() + 5000UL;
               print_heaterstates();
+              SERIAL_EOL();
             }
             idle();
           }
@@ -806,9 +795,10 @@
         if (ubl_lcd_clicked()) return exit_from_g26();
       #endif
 
-      if (PENDING(millis(), next)) {
+      if (ELAPSED(millis(), next)) {
         next = millis() + 5000UL;
         print_heaterstates();
+        SERIAL_EOL();
       }
       idle();
     }
@@ -835,7 +825,7 @@
         lcd_setstatusPGM(PSTR("User-Controlled Prime"), 99);
         chirp_at_user();
 
-        set_destination_to_current();
+        set_destination_from_current();
 
         recover_filament(destination); // Make sure G26 doesn't think the filament is retracted().
 
@@ -850,9 +840,9 @@
 
           stepper.synchronize();    // Without this synchronize, the purge is more consistent,
                                     // but because the planner has a buffer, we won't be able
-                                    // to stop as quickly.  So we put up with the less smooth
+                                    // to stop as quickly. So we put up with the less smooth
                                     // action to give the user a more responsive 'Stop'.
-          set_destination_to_current();
+          set_destination_from_current();
           idle();
         }
 
@@ -860,7 +850,7 @@
 
         #if ENABLED(ULTRA_LCD)
           strcpy_P(lcd_status_message, PSTR("Done Priming")); // We can't do lcd_setstatusPGM() without having it continue;
-                                                              // So...  We cheat to get a message up.
+                                                              // So... We cheat to get a message up.
           lcd_setstatusPGM(PSTR("Done Priming"), 99);
           lcd_quick_feedback();
         #endif
@@ -876,11 +866,11 @@
         lcd_setstatusPGM(PSTR("Fixed Length Prime."), 99);
         lcd_quick_feedback();
       #endif
-      set_destination_to_current();
+      set_destination_from_current();
       destination[E_AXIS] += g26_prime_length;
       G26_line_to_destination(planner.max_feedrate_mm_s[E_AXIS] / 15.0);
       stepper.synchronize();
-      set_destination_to_current();
+      set_destination_from_current();
       retract_filament(destination);
     }
 
