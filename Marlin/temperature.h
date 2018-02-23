@@ -292,8 +292,11 @@ class Temperature {
     /**
      * Static (class) methods
      */
-    static float analog2temp(int raw, uint8_t e);
-    static float analog2tempBed(int raw);
+    static float analog2temp(const int raw, const uint8_t e);
+
+    #if HAS_TEMP_BED
+      static float analog2tempBed(const int raw);
+    #endif
 
     /**
      * Called from the Temperature ISR
@@ -332,8 +335,8 @@ class Temperature {
     #endif
 
     #if ENABLED(FILAMENT_WIDTH_SENSOR)
-      static float analog2widthFil(); // Convert raw Filament Width to millimeters
-      static int widthFil_to_size_ratio(); // Convert raw Filament Width to an extrusion ratio
+      static float analog2widthFil();         // Convert raw Filament Width to millimeters
+      static int8_t widthFil_to_size_ratio(); // Convert Filament Width (mm) to an extrusion ratio
     #endif
 
 
