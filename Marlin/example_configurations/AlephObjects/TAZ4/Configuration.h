@@ -37,7 +37,7 @@
  */
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
-#define CONFIGURATION_H_VERSION 010100
+#define CONFIGURATION_H_VERSION 010107
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -1766,8 +1766,8 @@
 #endif
 
 /**
-* R/C SERVO support
-* Sponsored by TrinityLabs, Reworked by codexmas
+ * R/C SERVO support
+ * Sponsored by TrinityLabs, Reworked by codexmas
  */
 
 /**

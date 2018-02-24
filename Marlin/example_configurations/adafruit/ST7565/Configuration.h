@@ -1746,8 +1746,8 @@
 #endif
 
 /**
-* R/C SERVO support
-* Sponsored by TrinityLabs, Reworked by codexmas
+ * R/C SERVO support
+ * Sponsored by TrinityLabs, Reworked by codexmas
  */
 
 /**
