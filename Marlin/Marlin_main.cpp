@@ -10095,7 +10095,7 @@ inline void gcode_M502() {
    */
   inline void gcode_M702() {
     for (uint8_t s = 0; s < E_STEPPERS; s++) {
-      select_multiplexed_stepper(e);
+      select_multiplexed_stepper(s);
       // TODO: standard unload filament function
       // MK2 firmware behavior:
       //  - Make sure temperature is high enough
@@ -11524,11 +11524,11 @@ void tool_change(const uint8_t tmp_extruder, const float fr_mm_s/*=0.0*/, bool n
           return invalid_extruder_error(tmp_extruder);
 
         select_multiplexed_stepper(tmp_extruder);
+      #else
+
+        // Set the new active extruder
+        active_extruder = tmp_extruder;
       #endif
-
-      // Set the new active extruder
-      active_extruder = tmp_extruder;
-
     #endif // HOTENDS <= 1
 
     #if ENABLED(SWITCHING_EXTRUDER) && !DONT_SWITCH
