@@ -357,9 +357,14 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
 //  MMU D-bot hotend
-#define  DEFAULT_Kp 13.86
-#define  DEFAULT_Ki 0.99
-#define  DEFAULT_Kd 48.53
+//#define  DEFAULT_Kp 13.86
+//#define  DEFAULT_Ki 0.99
+//#define  DEFAULT_Kd 48.53
+
+// Arco WD MMU
+    #define  DEFAULT_Kp 22.49
+    #define  DEFAULT_Ki 1.96
+    #define  DEFAULT_Kd 64.49
 
   // Ultimaker
 //  #define  DEFAULT_Kp 22.2
@@ -404,10 +409,11 @@
 
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
-  //  D-bot
-  #define  DEFAULT_bedKp 262.38
-  #define  DEFAULT_bedKi 26.04
-  #define  DEFAULT_bedKd 660.96
+    // Acro WD MMU
+    #define  DEFAULT_bedKp 172.32
+    #define  DEFAULT_bedKi 28.43
+    #define  DEFAULT_bedKd 261.15
+
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
@@ -1161,8 +1167,8 @@
 #define PREHEAT_1_TEMP_BED     70
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_TEMP_HOTEND 250
+#define PREHEAT_2_TEMP_BED    100
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 /**
