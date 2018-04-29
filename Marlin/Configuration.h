@@ -159,8 +159,6 @@
   #define E_MUX0_PIN 40  // Always Required
   #define E_MUX1_PIN 42  // Needed for 3 to 8 steppers
   //#define E_MUX2_PIN 44  // Needed for 5 to 8 steppers
-
-  //#define E_MUX_STEPPERS 4
 #endif
 
 // A dual extruder that uses a single stepper motor
@@ -1182,7 +1180,7 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-#define NOZZLE_PARK_FEATURE
+//#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z }
@@ -1364,7 +1362,7 @@
  *
  * Use CRC checks and retries on the SD communication.
  */
-#define SD_CHECK_AND_RETRY
+//#define SD_CHECK_AND_RETRY
 
 //
 // ENCODER SETTINGS
