@@ -362,9 +362,9 @@
 //#define  DEFAULT_Kd 48.53
 
 // Arco WD MMU
-    #define  DEFAULT_Kp 22.49
-    #define  DEFAULT_Ki 1.96
-    #define  DEFAULT_Kd 64.49
+    #define  DEFAULT_Kp 36.50
+    #define  DEFAULT_Ki 3.68
+    #define  DEFAULT_Kd 90.45
 
   // Ultimaker
 //  #define  DEFAULT_Kp 22.2
