@@ -11524,10 +11524,11 @@ void tool_change(const uint8_t tmp_extruder, const float fr_mm_s/*=0.0*/, bool n
           return invalid_extruder_error(tmp_extruder);
 
         select_multiplexed_stepper(tmp_extruder);
+        active_extruder = 0;
+      #else
+          // Set the new active extruder
+          active_extruder = tmp_extruder;
       #endif
-
-      // Set the new active extruder
-      active_extruder = tmp_extruder;
 
     #endif // HOTENDS <= 1
 
