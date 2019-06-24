@@ -132,3 +132,14 @@ CMakeListsPrivate.txt
 #CLion
 cmake-build-*
 /buildroot/
+.vscode/ipch/d72bb207a3fa724f/mmap_address.bin
+.vscode/ipch/891a8490b5062613/mmap_address.bin
+.vscode/ipch/d72bb207a3fa724f/ULTRALCD.ipch
+.vscode/ipch/3bfde45cbfb003b1/mmap_address.bin
+.vscode/ipch/28b7ebc7984fc177/mmap_address.bin
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/c_cpp_properties.json
+.vscode/.BROWSE.C_CPP.DB-wal
+.vscode/.BROWSE.C_CPP.DB-shm
+.vscode/.BROWSE.C_CPP.DB
