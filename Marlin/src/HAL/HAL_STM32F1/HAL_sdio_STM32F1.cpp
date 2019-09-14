@@ -29,7 +29,7 @@
 
 #if defined(STM32_HIGH_DENSITY) || defined(STM32_XL_DENSITY)
 
-#include "sdio.h"
+#include "HAL_sdio_STM32F1.h"
 
 SDIO_CardInfoTypeDef SdCard;
 

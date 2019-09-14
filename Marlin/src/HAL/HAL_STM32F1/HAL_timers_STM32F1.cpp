@@ -28,7 +28,7 @@
 
 #include "HAL.h"
 
-#include "timers.h"
+#include "HAL_timers_STM32F1.h"
 
 // ------------------------
 // Local defines

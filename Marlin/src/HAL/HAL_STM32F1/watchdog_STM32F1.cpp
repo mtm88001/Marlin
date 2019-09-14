@@ -31,7 +31,7 @@
 #if ENABLED(USE_WATCHDOG)
 
 #include <libmaple/iwdg.h>
-#include "watchdog.h"
+#include "watchdog_STM32F1.h"
 
 void watchdog_reset() {
   #if DISABLED(PINS_DEBUGGING) && PIN_EXISTS(LED)

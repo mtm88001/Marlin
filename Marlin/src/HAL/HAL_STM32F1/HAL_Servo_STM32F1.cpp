@@ -29,8 +29,8 @@
 
 uint8_t ServoCount = 0;
 
-#include "Servo.h"
-#include "timers.h"
+#include "HAL_Servo_STM32F1.h"
+#include "HAL_timers_STM32F1.h"
 
 //#include "Servo.h"
 
